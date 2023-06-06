@@ -7,8 +7,9 @@ import { ProLayout, Settings } from '@ant-design/pro-components'
 import { route } from '@/common/const/route'
 import Loading from '@/components/loading'
 import { ConfigProvider } from 'antd'
-import { theme } from './theme.ts'
+import { theme } from './theme'
 import routes from '~react-pages'
+import { useAppStore } from '@/store/app'
 
 const layoutSettings: Settings = {
   navTheme: 'light',
@@ -20,6 +21,7 @@ const layoutSettings: Settings = {
 }
 
 const LayoutPage = React.memo(() => {
+  const { userInfo } = useAppStore()
 
   return (
     <ConfigProvider theme={{ token: theme }}>
@@ -39,9 +41,9 @@ const LayoutPage = React.memo(() => {
           )
         }}
         avatarProps={{
-          src: '/vite.svg',
+          src: userInfo.avatar,
           size: 'small',
-          title: 'username',
+          title: userInfo.username,
         }}
         route={route}
       >

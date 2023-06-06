@@ -21,6 +21,7 @@ specifiers:
   typescript: ^5.0.2
   vite: ^4.3.9
   vite-plugin-pages: ^0.31.0
+  zustand: ^4.3.8
 
 dependencies:
   '@ant-design/icons': 5.1.4_biqbaboplfbrettd7655fr4n2y
@@ -31,6 +32,7 @@ dependencies:
   react-router: 6.11.2_react@18.2.0
   react-router-dom: 6.11.2_biqbaboplfbrettd7655fr4n2y
   styled-components: 6.0.0-rc.3_biqbaboplfbrettd7655fr4n2y
+  zustand: 4.3.8_react@18.2.0
 
 devDependencies:
   '@types/node': 18.0.0
@@ -4996,3 +4998,19 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zustand/4.3.8_react@18.2.0:
+    resolution: {integrity: sha512-4h28KCkHg5ii/wcFFJ5Fp+k1J3gJoasaIbppdgZFO4BPJnsNxL0mQXBSFgOgAdCdBj35aDTPvdAJReTMntFPGg==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
