@@ -1,8 +1,12 @@
+import { PageContainer, ProCard } from '@ant-design/pro-components'
+
 const Home = () => {
   return (
-    <div>
-      This is on the home
-    </div>
+    <PageContainer header={{ title: 'Home', extra: 'extra' }}>
+      <ProCard>
+        This is on the home
+      </ProCard>
+    </PageContainer>
   )
 }
 

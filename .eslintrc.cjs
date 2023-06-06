@@ -10,5 +10,9 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    'array-bracket-spacing': ["error","always"],
+    'object-curly-spacing': ["error","always"],
+    'quotes': [1, "single"], // 单引号
+    'semi': [2, 'never'] // 结尾不允许有分号
   },
 }
