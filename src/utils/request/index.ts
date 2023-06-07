@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, {AxiosResponse} from 'axios'
 import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
 import { getCookie } from '../cookie'
 
@@ -22,17 +22,24 @@ async function authInterceptorReq(config: InternalAxiosRequestConfig) {
   return config
 }
 
+async function interceptorRes(response: AxiosResponse) {
+  // 这里去做错误拦截
+  return response
+}
+
 interface Config extends AxiosRequestConfig {
   // true代表不需要授权
   notAuthorization?: boolean
 }
 
-export default function (url: string, config: Config) {
+export default function<R = null>(url: string, config: Config) {
   const instance = axios.create({
     baseURL: import.meta.env.BASE_URL,
   })
   if (!config.notAuthorization) {
     instance.interceptors.request.use(authInterceptorReq)
   }
-  return instance(url, config)
+  instance.interceptors.response.use(interceptorRes)
+  return instance<API.Result<R>>(url, config)
+    .then(d => d.data.data)
 }
