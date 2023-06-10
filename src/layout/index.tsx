@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import {
   Link,
   useRoutes
@@ -10,6 +10,7 @@ import { ConfigProvider } from 'antd'
 import { theme } from './theme'
 import routes from '~react-pages'
 import { useAppStore } from '@/store/app'
+import { profile } from '@/services/api'
 
 const layoutSettings: Settings = {
   navTheme: 'light',
@@ -21,7 +22,18 @@ const layoutSettings: Settings = {
 }
 
 const LayoutPage = React.memo(() => {
-  const { userInfo } = useAppStore()
+  const { userInfo, setUserInfo } = useAppStore()
+  const pages = useRoutes(routes)
+
+  useEffect(() => {
+    profile().then(user => {
+      if (user) setUserInfo(user)
+    })
+  }, [])
+
+  if (!userInfo) {
+    return <Loading />
+  }
 
   return (
     <ConfigProvider theme={{ token: theme }}>
@@ -48,7 +60,7 @@ const LayoutPage = React.memo(() => {
         route={route}
       >
         <Suspense fallback={<Loading />}>
-          {useRoutes(routes)}
+          {pages}
         </Suspense>
       </ProLayout>
     </ConfigProvider>

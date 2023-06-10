@@ -1,18 +1,15 @@
 import { create } from 'zustand'
 
 interface AppStore {
-  userInfo: {
-    avatar: string;
-    username: string
-  }
+  userInfo?: API.UserInfo
 }
 
-export const useAppStore = create<AppStore>((set) => ({
-  userInfo: {
-    avatar: '/vite.svg',
-    username: 'username',
-  },
-  setUserInfo: (userInfo: AppStore['userInfo']) => set((state) => ({
+interface AppActions {
+  setUserInfo(userInfo: API.UserInfo): void
+}
+
+export const useAppStore = create<AppStore & AppActions>((set) => ({
+  setUserInfo: (userInfo) => set((state) => ({
     ...state,
     userInfo
   }))

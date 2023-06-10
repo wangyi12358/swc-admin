@@ -5,4 +5,11 @@ declare namespace API {
     code: number
     message?: string
   }
+
+  interface UserInfo {
+    id: number
+    username: string
+    avatar: string
+    createTime: Date
+  }
 }

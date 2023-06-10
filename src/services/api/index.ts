@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
 export function profile() {
-  return request('/api/profile', {
+  return request<API.UserInfo>('/api/profile', {
     method: 'get'
   })
 }
