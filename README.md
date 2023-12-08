@@ -15,7 +15,9 @@ $ pnpm i
 $ pnpm run dev
 ```
 
-### Links
+
+
+## 相关链接
 
 - [React](https://react.dev/)
 - [Typescript](https://www.typescriptlang.org/)
@@ -24,7 +26,7 @@ $ pnpm run dev
 - [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
 - [vitest](https://vitest.dev/)
 - [React-Router](https://reactrouter.com/)
-- [zustand](https://docs.pmnd.rs/zustand)
+- [jotai](https://jotai.org/)
 - [Style components](https://styled-components.com/)
 - [Ant Design](https://ant.design/)
 - [Pro components](https://procomponents.ant.design/)

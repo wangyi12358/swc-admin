@@ -1,16 +1,18 @@
+import { route } from '@/common/const/route'
+import Loading from '@/components/loading'
+import { profile } from '@/services/api'
+import { appAtom } from '@/store/app'
+import { ProLayout, Settings } from '@ant-design/pro-components'
+import { ConfigProvider } from 'antd'
+import { produce } from 'immer'
+import { useAtom } from 'jotai'
 import React, { Suspense, useEffect } from 'react'
 import {
   Link,
   useRoutes
 } from 'react-router-dom'
-import { ProLayout, Settings } from '@ant-design/pro-components'
-import { route } from '@/common/const/route'
-import Loading from '@/components/loading'
-import { ConfigProvider } from 'antd'
-import { theme } from './theme'
 import routes from '~react-pages'
-import { useAppStore } from '@/store/app'
-import { profile } from '@/services/api'
+import { theme } from './theme'
 
 const layoutSettings: Settings = {
   navTheme: 'light',
@@ -22,16 +24,20 @@ const layoutSettings: Settings = {
 }
 
 const LayoutPage = React.memo(() => {
-  const { userInfo, setUserInfo } = useAppStore()
+  const [appStore, setAppStore] = useAtom(appAtom)
   const pages = useRoutes(routes)
 
   useEffect(() => {
     profile().then(user => {
-      if (user) setUserInfo(user)
+      if (user) {
+        setAppStore(produce((state) => {
+          state.userInfo = user
+        }))
+      }
     })
   }, [])
 
-  if (!userInfo) {
+  if (!appStore.userInfo) {
     return <Loading />
   }
 
@@ -53,9 +59,9 @@ const LayoutPage = React.memo(() => {
           )
         }}
         avatarProps={{
-          src: userInfo.avatar,
+          src: appStore.userInfo.avatar,
           size: 'small',
-          title: userInfo.username,
+          title: appStore.userInfo.username,
         }}
         route={route}
       >

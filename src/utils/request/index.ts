@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
 import { getCookie } from '../cookie'
 

@@ -12,4 +12,13 @@ declare namespace API {
     avatar: string
     createTime: Date
   }
+
+  interface LoginParams {
+    username: string
+    password: string
+  }
+
+  interface LoginRes {
+    token: string
+  }
 }

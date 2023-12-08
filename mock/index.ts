@@ -16,5 +16,12 @@ export default [
       }
       res.end(ok(data))
     }
+  },
+  {
+    url: '/api/login',
+    method: 'post',
+    async rawResponse(req, res) {
+
+    }
   }
 ] as MockMethod[]

@@ -6,9 +6,10 @@ export function profile() {
   })
 }
 
-export function login() {
-  return request('/api/login', {
+export function login(data: API.LoginParams) {
+  return request<API.LoginRes>('/api/login', {
     notAuthorization: true,
-    method: 'get'
+    method: 'post',
+    data
   })
 }
