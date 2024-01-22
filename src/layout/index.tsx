@@ -2,10 +2,10 @@ import { route } from '@/common/const/route'
 import Loading from '@/components/loading'
 import { profile } from '@/services/api'
 import { appAtom } from '@/store/app'
+import { useGlobalStoreAtom } from '@/store/global'
 import { ProLayout, Settings } from '@ant-design/pro-components'
 import { ConfigProvider } from 'antd'
 import { produce } from 'immer'
-import { useAtom } from 'jotai'
 import React, { Suspense, useEffect } from 'react'
 import {
   Link,
@@ -24,7 +24,7 @@ const layoutSettings: Settings = {
 }
 
 const LayoutPage = React.memo(() => {
-  const [appStore, setAppStore] = useAtom(appAtom)
+  const [ appStore, setAppStore ] = useGlobalStoreAtom(appAtom)
   const pages = useRoutes(routes)
 
   useEffect(() => {

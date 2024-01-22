@@ -3,28 +3,11 @@ import { setCookie } from '@/utils/cookie'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { LoginForm, ProFormText } from '@ant-design/pro-components'
 import { FC } from 'react'
-import styled from 'styled-components'
-
-const LoginContent = styled.div`
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-`
-
-const LoginFormContent = styled.div`
-  margin-top: 30vh;
-  margin-left: 20vh;
-`
-
-const Title = styled.div`
-  margin-bottom: 60px;
-  font-size: 18px;
-`
 
 const Login: FC = () => {
   return (
-    <LoginContent>
-      <LoginFormContent>
+    <div className='h-screen overflow-hidden relative'>
+      <div className='mt-[30vh] ml-[20vh]'>
         <LoginForm<API.LoginParams>
           initialValues={{
             username: 'admin',
@@ -37,7 +20,7 @@ const Login: FC = () => {
               location.href = import.meta.env.BASE_URL
             }
           }}
-          title={<Title>Base Admin</Title>}
+          title={<div className='mb-16 text-lg'>Base Admin</div>}
         >
           <ProFormText
             name="username"
@@ -68,9 +51,8 @@ const Login: FC = () => {
             ]}
           />
         </LoginForm>
-
-      </LoginFormContent>
-    </LoginContent>
+      </div>
+    </div>
   )
 }
 export default Login

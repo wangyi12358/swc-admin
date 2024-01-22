@@ -1,9 +1,10 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import Pages from 'vite-plugin-pages'
+import react from '@vitejs/plugin-react'
+import autoprefixer from 'autoprefixer'
 import { resolve } from 'path'
-// import { viteMockServe } from 'vite-plugin-mock'
+import tailwindcss from 'tailwindcss'
+import { defineConfig } from 'vite'
+import Pages from 'vite-plugin-pages'
 
 
 // https://vitejs.dev/config/
@@ -13,12 +14,22 @@ export default defineConfig({
       { find: '@', replacement: resolve(__dirname, 'src/') }
     ],
   },
+  css: {
+    postcss: {
+      plugins: [ tailwindcss, autoprefixer ],
+    },
+  },
   plugins: [
-    Pages(),
+    Pages({
+      exclude: [
+        '**/components/**/*.tsx',
+        '**/utils/**/*.ts',
+        '**/atoms/**/*.ts',
+        '**/utils/*.ts',
+        '**/hooks/*.ts',
+        '**/shared/*.ts',
+      ],
+    }),
     react(),
-    // viteMockServe({
-    //   mockPath: './mock/',
-    //   enable: true,
-    // })
   ],
 })

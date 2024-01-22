@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .border-base {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+}
+
+@layer utilities {
+  .split-line-y > * + * {
+    border-top: 0.5px solid #eee;
+  }
+  .split-line-x > * + * {
+    border-left: 0.5px solid #eee;
+  }
+}
