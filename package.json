@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "biome lint",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -28,20 +28,18 @@
     "use-context-selector": "^1.4.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@biomejs/cli-darwin-x64": "^1.8.3",
+    "@rollup/rollup-darwin-x64": "^4.21.2",
     "@types/mockjs": "^1.0.7",
     "@types/node": "18.0.0",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.59.0",
-    "@typescript-eslint/parser": "^5.59.0",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitejs/plugin-react-swc": "3.0.0",
-    "eslint": "^8.38.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4",
     "mockjs": "^1.1.0",
     "typescript": "^5.1.3",
-    "vite": "^4.3.9",
+    "vite": "^5.2.5",
     "vite-plugin-mock": "^2.9.8",
     "vite-plugin-pages": "^0.31.0",
     "vitest": "^0.31.4"
