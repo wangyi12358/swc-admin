@@ -4,15 +4,11 @@ import type {
   ExtractAtomResult,
   ExtractAtomValue,
   WritableAtom,
-  createStore
+  createStore,
 } from 'jotai';
-import {
-  useAtom,
-  useAtomValue,
-  useSetAtom,
-} from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 
-type SetAtom<Args extends any[], Result> = (...args: Args) => Result
+type SetAtom<Args extends any[], Result> = (...args: Args) => Result;
 type Store = ReturnType<typeof createStore>;
 
 /**
@@ -26,23 +22,30 @@ export function createStoreAccessor(store: Store) {
    * @param atom
    */
   function useStoreAtom<Value, Args extends any[], Result>(
-    atom: WritableAtom<Value, Args, Result>
+    atom: WritableAtom<Value, Args, Result>,
   ): [Awaited<Value>, SetAtom<Args, Result>];
   function useStoreAtom<AtomType extends WritableAtom<any, any[], any>>(
-    atom: AtomType
-  ): [Awaited<ExtractAtomValue<AtomType>>, SetAtom<ExtractAtomArgs<AtomType>, ExtractAtomResult<AtomType>>];
-  function useStoreAtom<AtomType extends Atom<any>>(atom: AtomType): [Awaited<ExtractAtomValue<AtomType>>, never];
+    atom: AtomType,
+  ): [
+    Awaited<ExtractAtomValue<AtomType>>,
+    SetAtom<ExtractAtomArgs<AtomType>, ExtractAtomResult<AtomType>>,
+  ];
+  function useStoreAtom<AtomType extends Atom<any>>(
+    atom: AtomType,
+  ): [Awaited<ExtractAtomValue<AtomType>>, never];
   function useStoreAtom<Value>(atom: Atom<Value>) {
-    return useAtom(atom)
+    return useAtom(atom);
   }
 
   /**
    * alias useAtomValue
    * @param atom
    */
-  function useStoreAtomValue<AtomType extends Atom<any>>(atom: AtomType): Awaited<ExtractAtomValue<AtomType>>;
+  function useStoreAtomValue<AtomType extends Atom<any>>(
+    atom: AtomType,
+  ): Awaited<ExtractAtomValue<AtomType>>;
   function useStoreAtomValue<Value>(atom: Atom<Value>) {
-    return useAtomValue(atom, { store })
+    return useAtomValue(atom, { store });
   }
 
   /**
@@ -50,10 +53,12 @@ export function createStoreAccessor(store: Store) {
    * @param atom
    */
   function useSetStoreAtom<AtomType extends WritableAtom<any, any[], any>>(
-    atom: AtomType
+    atom: AtomType,
   ): SetAtom<ExtractAtomArgs<AtomType>, ExtractAtomResult<AtomType>>;
-  function useSetStoreAtom<Value, Args extends any[], Result>(atom: WritableAtom<Value, Args, Result>) {
-    return useSetAtom(atom, { store })
+  function useSetStoreAtom<Value, Args extends any[], Result>(
+    atom: WritableAtom<Value, Args, Result>,
+  ) {
+    return useSetAtom(atom, { store });
   }
 
   /**
@@ -61,8 +66,16 @@ export function createStoreAccessor(store: Store) {
    * @param atom
    * @param updater
    */
-  function setStoreAtom<Value, Args extends any[], Result>(atom: WritableAtom<Value, Args, Result>, ...args: Args) {
-    store.set(atom, ...args)
+  function setStoreAtom<Value, Args extends any[], Result>(
+    atom: WritableAtom<Value, Args, Result>,
+    ...args: Args
+  ) {
+    store.set(atom, ...args);
   }
-  return [ useStoreAtomValue, useSetStoreAtom, useStoreAtom, setStoreAtom ] as const
+  return [
+    useStoreAtomValue,
+    useSetStoreAtom,
+    useStoreAtom,
+    setStoreAtom,
+  ] as const;
 }

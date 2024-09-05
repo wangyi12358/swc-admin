@@ -1,13 +1,11 @@
-import { PageContainer, ProCard } from '@ant-design/pro-components'
+import { PageContainer, ProCard } from '@ant-design/pro-components';
 
-const Home = () => {
+function Home() {
   return (
     <PageContainer header={{ title: 'Home', extra: 'extra' }}>
-      <ProCard>
-        This is on the home
-      </ProCard>
+      <ProCard>This is on the home</ProCard>
     </PageContainer>
-  )
+  );
 }
 
-export default Home
+export default Home;

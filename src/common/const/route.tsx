@@ -1,12 +1,12 @@
-import { ProLayoutProps } from '@ant-design/pro-components'
-import { HomeOutlined, MoneyCollectOutlined } from '@ant-design/icons'
+import { HomeOutlined, MoneyCollectOutlined } from '@ant-design/icons';
+import type { ProLayoutProps } from '@ant-design/pro-components';
 
 export const route: ProLayoutProps['route'] = {
   children: [
     {
       path: '/',
       name: '首页',
-      icon: <HomeOutlined />
+      icon: <HomeOutlined />,
     },
     {
       path: '/order',
@@ -15,9 +15,9 @@ export const route: ProLayoutProps['route'] = {
       children: [
         {
           name: '订单列表',
-          path: 'list'
-        }
-      ]
-    }
-  ]
-}
+          path: 'list',
+        },
+      ],
+    },
+  ],
+};
