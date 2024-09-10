@@ -25,6 +25,6 @@ $ pnpm run dev
 * [vitest](https://vitest.dev/)
 * [React-Router](https://reactrouter.com/)
 * [jotai](https://jotai.org/)
-* [Style components](https://styled-components.com/)
+* [Tailwind CSS](https://tailwindcss.com/)
 * [Ant Design](https://ant.design/)
 * [Pro components](https://procomponents.ant.design/)
