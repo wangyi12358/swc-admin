@@ -1,35 +1,20 @@
-/// <reference types="vitest" />
-import react from '@vitejs/plugin-react'
-import autoprefixer from 'autoprefixer'
-import { resolve } from 'path'
-import tailwindcss from 'tailwindcss'
-import { defineConfig } from 'vite'
-import Pages from 'vite-plugin-pages'
-
+import generouted from '@generouted/react-router/plugin';
+import react from '@vitejs/plugin-react';
+import autoprefixer from 'autoprefixer';
+import { resolve } from 'node:path';
+import tailwindcss from 'tailwindcss';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve:{
-    alias: [
-      { find: '@', replacement: resolve(__dirname, 'src/') }
-    ],
+  resolve: {
+    alias: [{ find: '@', replacement: resolve(__dirname, 'src/') }],
   },
   css: {
     postcss: {
-      plugins: [ tailwindcss, autoprefixer ],
+      // @ts-ignore
+      plugins: [tailwindcss, autoprefixer],
     },
   },
-  plugins: [
-    Pages({
-      exclude: [
-        '**/components/**/*.tsx',
-        '**/utils/**/*.ts',
-        '**/atoms/**/*.ts',
-        '**/utils/*.ts',
-        '**/hooks/*.ts',
-        '**/shared/*.ts',
-      ],
-    }),
-    react(),
-  ],
-})
+  plugins: [generouted(), react()],
+});

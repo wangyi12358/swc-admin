@@ -1,5 +1,5 @@
 import { route } from '@/common/const/route';
-import Loading from '@/components/loading';
+import Loading from '@/components/ui/loading';
 import { profile } from '@/services/api';
 import { appAtom } from '@/store/app';
 import { useGlobalStoreAtom } from '@/store/global';
